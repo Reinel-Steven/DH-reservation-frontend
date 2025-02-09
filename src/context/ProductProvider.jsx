@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { ProductContext } from './productContext'
-
+import { colors } from '@mui/material'
+import '../styles/productsPage.css'
 
 export const ProductProvider = ({children}) => {
 
@@ -29,7 +30,7 @@ export const ProductProvider = ({children}) => {
   }, [])
 
   return (
-    <ProductContext.Provider value={{ products }} >
+    <ProductContext.Provider value={{ products }} >      
       {children}
     </ProductContext.Provider>
   )

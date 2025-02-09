@@ -1,9 +1,38 @@
   
+  /* Estilos personalizados para el Buscador */
+.container{
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 1px 5px 1px;
+  display: contents;
+}
+.container-page{
+  display: block;
+  margin-top: 60px;
+}
+.container-products{
+  margin: 10px;
+  }
+
+.card-search {
+  padding: 20px;
+  width: 100%;
+  display: block;
+  z-index: 999;
+}
+
+.card-search {
+  background-color: #C4A05F;
+  margin-top: 10px;
+}
   /* Visible solo en pantallas pequeñas (hasta 768px) */
   @media (max-width: 768px) {
-    .recomendados-container {
-      display: flex;      
-      margin-top: 300px;
+    .container-page{
+      margin-top: 50px;
+    }
+    .product-list {
+      display: contents;      
     }
     .cards-grid {
       display: none;
@@ -14,9 +43,18 @@
   }
 
   @media (min-width: 769px) and (max-width: 991px) {
-    .recomendados-container {
-      display: flex;
-      margin-top: 150px;
+    .container{
+      display: contents;
+    }
+    .container-page{
+      margin-top: 50px;
+    }
+    .container-products{      
+      padding: 20px;
+    }
+    .product-list {
+      position: relative;
+      display: inline-table;
     }
     .cards-grid {
       display: none;
@@ -28,14 +66,12 @@
   
   /* Oculto en pantallas grandes (más de 768px) */
   @media (min-width: 992px) {
-    .recomendados-container {
+    .product-list {
       display: none;
     }
      /* Estilos para pantallas grandes (4 cards por fila) */
   .cards-grid {
     display: grid;
-    grid-row: 1;
-    margin-top: 150px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
@@ -49,9 +85,10 @@
   }
   
   .pagination button {
-    margin: 0 5px;
+    margin: 0px 5px;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 10px;
   }
   }
   

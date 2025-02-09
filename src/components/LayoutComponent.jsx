@@ -23,16 +23,16 @@ export const LayoutComponent = () => {
 
           {/* Botón de menú hamburguesa */}
           <button
-            className="navbar-toggler color-gold"
+            className="navbar-toggler color-gold "
             type="button"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon "></span>
           </button>
 
           {/* Contenido del menú */}
           <div className={`button-isOpen collapse navbar-collapse ${isOpen ? "show" : ""}`}>
-            <div className="container d-flex justify-content-end">
+            <div className="col-12 d-flex justify-content-end">
               <a href="/register" className="btn btn-outline-light me-2">
                 Crear Cuenta
               </a>
@@ -42,44 +42,7 @@ export const LayoutComponent = () => {
             </div>
           </div>
         </div>
-        {/* Buscador */}
-      <div className="navbar-bottom ">
-        <div className="card-search" >
-          <div className="row g-3">
-            {/* Select de categorías */}
-            <div className="col-md-2">
-              <select className="form-select">
-                <option value="">Categoría</option>
-                <option value="1">Autos</option>
-                <option value="2">Camionetas</option>
-                <option value="3">Motos</option>
-                <option value="4">Bicicletas</option>
-              </select>
-            </div>
-
-            {/* Input de búsqueda por texto */}
-            <div className="col-md-6">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Buscar por nombre..."
-              />
-            </div>
-
-            {/* Selector de fecha */}
-            <div className="col-md-2">
-              <input type="date" className="form-control" />
-            </div>
-            {/* Boton Buscar */}
-            <div className="col-md-2">
-              <button type="date" className="form-control" >Buscar</button>
-            </div>
-          </div>
-        </div>
-      </div>
       </nav>
-
-      
     </>
   )
 }

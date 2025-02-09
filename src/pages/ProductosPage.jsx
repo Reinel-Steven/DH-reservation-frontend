@@ -10,7 +10,7 @@ import '../styles/productsPage.css'
 export const ProductosPage = () => {
 
   const { products } = useContext(ProductContext)
-  const { addProduct } = useContext(CartContext) 
+  const { addProduct } = useContext(CartContext)
 
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,47 +27,82 @@ export const ProductosPage = () => {
 
   return (
     <>
-    <div className="">
+      <div className="container-page">
+        {/* Buscador */}
+          <div className="card-search" >
+            <div className="row g-3">
+              {/* Select de categorías */}
+              <div className="col-md-2">
+                <select className="form-select">
+                  <option value="">Categoría</option>
+                  <option value="1">Autos</option>
+                  <option value="2">Camionetas</option>
+                  <option value="3">Motos</option>
+                  <option value="4">Bicicletas</option>
+                </select>
+              </div>
 
-     {/* Contenido para pantallas pequeñas */}
-     <div className="recomendados-container row justify-content-center align-items-center">        
-        {products.map((product) => (
-          <CardComponent className = "card"
-            key={product.id}
-            id={product.id}
-            image={product.image}
-            tittle={product.tittle}
-            description={product.description}
-            price={product.price}
-            handlerAdd={() => addProduct()}
-          />
-        ))}
-      </div>
+              {/* Input de búsqueda por texto */}
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Buscar por nombre..."
+                />
+              </div>
 
-      {/* Contenido para pantallas grandes */}
-      <div className="cards-grid">
-        {currentCards.map((product) => (
-          <CardComponent
-            key={product.id}
-            id={product.id}
-            image={product.image}
-            tittle={product.tittle}
-            description={product.description}
-            price={product.price}
-            handlerAdd={() => addProduct()}
-          />
-        ))}
-      </div>
+              {/* Selector de fecha */}
+              <div className="col-md-2">
+                <input type="date" className="form-control" />
+              </div>
+              {/* Boton Buscar */}
+              <div className="col-md-2">
+                <button type="date" className="form-control" >Buscar</button>
+              </div>
+            </div>
+        </div>
+        {/* -------------------------- end  Buscador ------------------------------------*/}
+        <div className="container-products">
+        {/* Contenido para pantallas pequeñas */}
+        <div className="product-list row justify-content-center align-items-center">
+          {products.map((product) => (
+            <CardComponent className="card"
+              key={product.id}
+              id={product.id}
+              image={product.image}
+              tittle={product.tittle}
+              description={product.description}
+              price={product.price}
+              handlerAdd={() => addProduct()}
+            />
+          ))}
+        </div>
 
-      {/* Paginación para pantallas grandes */}
-      <div className="pagination">
-        {Array.from({ length: Math.ceil(products.length / cardsPerPage) }).map(
-          (_, index=1) => (
-            <button key={index + 1} onClick={() => handlePaginate(index + 1)}>
-              {index + 1}
-            </button>
-          )
-        )}
+        {/* Contenido para pantallas grandes */}
+        <div className="row cards-grid">
+          {currentCards.map((product) => (
+            <CardComponent
+              key={product.id}
+              id={product.id}
+              image={product.image}
+              tittle={product.tittle}
+              description={product.description}
+              price={product.price}
+              handlerAdd={() => addProduct()}
+            />
+          ))}
+        </div>
+
+        {/* Paginación para pantallas grandes */}
+        <div className="pagination">
+          {Array.from({ length: Math.ceil(products.length / cardsPerPage) }).map(
+            (_, index = 1) => (
+              <button key={index + 1} onClick={() => handlePaginate(index + 1)}>
+                {index + 1}
+              </button>
+            )
+          )}
+        </div>
       </div>
       </div>
     </>

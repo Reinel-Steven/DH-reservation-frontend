@@ -1,8 +1,9 @@
 body {   
     color: #000000; /* Texto blanco para contraste */
     font-family: Arial, sans-serif;
+    width: 100%;
   }
-  
+
   .footer {
     background-color: #0b5ed7;
     color: white;
