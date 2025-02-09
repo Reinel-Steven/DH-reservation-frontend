@@ -7,9 +7,8 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { ProductosPage } from './pages/ProductosPage'
 import { CartPage } from './pages/CartPage'
 
-function ReservationApp() {
-  const [count, setCount] = useState(0)
-
+export const ReservationApp = () => {
+  
   return (
     <>
       <ProductProvider>
@@ -27,5 +26,3 @@ function ReservationApp() {
     </>
   )
 }
-
-export default ReservationApp

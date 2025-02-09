@@ -1,42 +1,6 @@
-body {
-    background-color: #0d6efd; /* bg-primary */
-    color: #ffffff; /* Texto blanco para contraste */
+body {   
+    color: #000000; /* Texto blanco para contraste */
     font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card {
-    background-color: #ffffff;
-    color: #212529;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-title {
-    color: #0d6efd;
-  }
-  
-  .btn-primary {
-    background-color: #0b5ed7;
-    border-color: #0b5ed7;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0a58ca;
-    border-color: #0a58ca;
-  }
-  
-  .btn-outline-light {
-    color: #ffffff;
-    border-color: #ffffff;
-  }
-  
-  .btn-outline-light:hover {
-    background-color: #ffffff;
-    color: #0d6efd;
   }
   
   .footer {

@@ -1,0 +1,90 @@
+
+.navbar {
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+    height: auto; /* Altura fija del navbar (ajusta según tus necesidades) */
+    background-color: black; /* Color de fondo */
+    padding: 8px 0px 5px 0px; /* Ajusta el padding horizontal según sea necesario */
+  }
+.container{
+    display: flex;
+    width: 100%;
+}
+
+.navbar-slogan{
+    color: white;
+} 
+.navbar-logo{
+    height: 40px;
+}
+.color-black{
+    color: black;
+    background-color: black;
+}
+
+.color-white{
+    color: white;
+    background-color: white;
+}
+
+.color-gold{
+    color: white;
+    background-color: #C4A05F;
+}
+
+
+
+/* Estilos personalizados para el Buscador */
+
+.card-search {
+    padding: 20px;
+    width: 100%;
+    display: block;
+    z-index: 999;
+  }
+  
+  /* Estilos para los inputs y selects */
+  .form-select, .form-control {
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ddd; /* Borde suave */
+  }
+  
+  .navbar-bottom{
+    z-index: 998;
+    width: 100%;
+    position: fixed;
+    margin-top: 150px;
+    padding-bottom: 15px;
+    background-color: #C4A05F;
+    display: flex;
+}
+
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 990px) {
+    .card {
+      margin-top: 20px; /* Espacio adicional en móviles */
+    }
+    .navbar-logo{
+        height: 20px;
+    }
+    .navbar-slogan{
+        font-size: small;
+    }  
+    .button-isOpen{
+        margin: 10px;    
+        padding: 10px;
+        border-top: 1px solid #C4A05F;
+        display: grid;    
+        background-color: black;
+    }
+    .navbar-bottom{
+        display: contents;
+    }
+    .card-search{
+        background-color: #C4A05F;
+        margin-top: 10px;
+    }
+  }
