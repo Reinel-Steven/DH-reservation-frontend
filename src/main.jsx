@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import ReservationApp from './ReservationApp.jsx'
+import './index.css'
 import { BrowserRouter } from 'react-router-dom'
+import { ReservationApp } from './ReservationApp'
 
 
 createRoot(document.getElementById('root')).render(
