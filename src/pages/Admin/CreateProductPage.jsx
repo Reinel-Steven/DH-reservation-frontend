@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/CreateProductPage.css";
+import { vehicleBrand } from "../../model/vehicleBrand.js"
 
 export const CreateProductPage = () => {
   const [product, setProduct] = useState({
@@ -28,31 +29,69 @@ export const CreateProductPage = () => {
     console.log("Producto creado:", product);
   };
 
+  // Estado para almacenar la marca seleccionada
+  const [brandSelected, setBrandSelected] = useState("");
+
+  // Función para manejar el cambio de selección
+  const handleChangeBrand = (event) => {
+    setBrandSelected(event.target.value);
+  };
+  
   return (
     <>
-    <br />
-    <br />
-    <br />
-    <br />
       <div className="card card-create">
-        
-        <div className="card-body" >
-        <div className="card-tittle">
-          Crear producto
-        </div>
-        <hr />
+
+        <div className="card-header" >
+          <div className="card-tittle">
+            Crear producto
+          </div>
+          <hr />
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="form-label">Nombre</label>
-              <input type="text" className="form-control" name="name" value={product.name} onChange={handleChange} required />
+              <select
+                className="form-select"
+                value={brandSelected}
+                onChange={handleChangeBrand}
+              >
+                <option value="">-- Selecciona una marca --</option>
+                {vehicleBrand.map((marca) => (
+                  <option key={marca.id} value={marca.nombre}>
+                    {marca.nombre} {/* Renderiza solo el nombre, no el objeto completo */}
+                  </option>
+                ))}
+              </select>
+              {/* Mostrar la marca seleccionada */}
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Referencia</label>
+              <input type="text"
+                className="form-control"
+                name="name" id="name"
+                value={product.name}
+                placeholder="Referencia del vehiculo EJ: Logan"
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="mb-3">
               <label className="form-label">Descripción</label>
-              <textarea className="form-control" name="description" value={product.description} onChange={handleChange} required />
+              <textarea className="form-control"
+                name="description" id="description"
+                value={product.description}
+                placeholder="Ej: cilindrage: 1600; color: negro; tipo: sedan; transmision: manual"
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="mb-3">
               <label className="form-label">Precio</label>
-              <input type="number" className="form-control" name="price" value={product.price} onChange={handleChange} required />
+              <input type="number" id="price"
+                className="form-control"
+                name="price"
+                value={product.price}
+                onChange={handleChange} required
+                placeholder="Valor de Renta"
+              />
             </div>
             <div className="mb-3">
               <label className="form-label">Imágenes (máx. 10)</label>
