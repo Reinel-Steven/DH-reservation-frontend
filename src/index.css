@@ -1,7 +1,16 @@
-body {   
+body { 
+    padding-top: 50px;  
     color: #000000; /* Texto blanco para contraste */
     font-family: Arial, sans-serif;
     width: 100%;
+  }
+
+  .container{
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 1px 5px 1px;
+    display: contents;
   }
 
   .footer {

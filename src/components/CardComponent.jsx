@@ -1,19 +1,19 @@
+import { useContext } from 'react';
 import '../styles/CardComponent.css'
-import { useContext, useEffect, useState } from "react"
-import { CartContext } from "../context/CartContext"
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
-export const CardComponent = ({ id, image, tittle, description, price, handlerAdd }) => {
+export const CardComponent = ({ product, image, tittle, description, price, onClickView }) => {
 
-    const { reservationSelected } = useContext(CartContext)
-    
-
-    const addProduct = () => {
-        handlerAdd()
+    const { setSelectProduct } = useContext(CartContext)
+    const navigate = useNavigate();
+    const handleViewProduct = (product) => {
+        setSelectProduct(product);
+        console.log("Titulo " + product.price);
+        navigate('/detail-product');
     }
 
-
     return (
-        <>
             <div className="card">
                 <img src={image} alt={tittle} className="card-img" />
                 <div className="card-content">
@@ -23,11 +23,10 @@ export const CardComponent = ({ id, image, tittle, description, price, handlerAd
 
                     <button type="button"
                         className="add-button"
-                        onClick={addProduct}
-                    > Ver detalle 
+                        onClick={() => handleViewProduct(product)}
+                    > Ver detalle
                     </button>
                 </div>
             </div>
-        </>
     )
 }

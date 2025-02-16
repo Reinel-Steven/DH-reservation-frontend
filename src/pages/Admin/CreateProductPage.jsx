@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/CreateProductPage.css";
-import { vehicleBrand } from "../../model/vehicleBrand.js"
+import { VehicleBrand } from "../../model/VehicleBrand.js"
+import { Categories } from "../../model/categories.js";
+
 
 export const CreateProductPage = () => {
   const [product, setProduct] = useState({
@@ -36,7 +38,15 @@ export const CreateProductPage = () => {
   const handleChangeBrand = (event) => {
     setBrandSelected(event.target.value);
   };
-  
+
+  // Estado para almacenar la categoria seleccionada
+  const [categorySelected, setCategorySelected] = useState("");
+
+  // Función para manejar el cambio de selección
+  const handleChangeCategory = (event) => {
+    setCategorySelected(event.target.value);
+  };
+
   return (
     <>
       <div className="card card-create">
@@ -47,6 +57,23 @@ export const CreateProductPage = () => {
           </div>
           <hr />
           <form onSubmit={handleSubmit}>
+
+            {/* Categories */}
+            <div className="mb-3">
+              <select
+                className="form-select"
+                value={categorySelected}
+                onChange={handleChangeCategory}
+              >
+                <option value="">-- Categoria --</option>
+                {Categories.map((c) => (
+                  <option key={c.id} value={c.nombre}>
+                    {c.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* Brand */}
             <div className="mb-3">
               <select
                 className="form-select"
@@ -54,13 +81,12 @@ export const CreateProductPage = () => {
                 onChange={handleChangeBrand}
               >
                 <option value="">-- Selecciona una marca --</option>
-                {vehicleBrand.map((marca) => (
+                {VehicleBrand.map((marca) => (
                   <option key={marca.id} value={marca.nombre}>
                     {marca.nombre} {/* Renderiza solo el nombre, no el objeto completo */}
                   </option>
                 ))}
               </select>
-              {/* Mostrar la marca seleccionada */}
             </div>
             <div className="mb-3">
               <label className="form-label">Referencia</label>

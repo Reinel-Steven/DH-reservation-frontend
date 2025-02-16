@@ -1,36 +1,20 @@
   
   /* Estilos personalizados para el Buscador */
-.container{
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 8px 1px 5px 1px;
-  display: contents;
-}
-.container-page{
-  display: block;
-  margin-top: 60px;
-}
-.container-products{
-  margin: 10px;
+
+  .card-search {
+    margin-top: 0px;
+    background-color: #C4A05F;    
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
   }
-
-.card-search {
-  padding: 20px;
-  width: 100%;
-  display: block;
-  z-index: 999;
-}
-
-.card-search {
-  background-color: #C4A05F;
-  margin-top: 10px;
+   /* Estilos personalizados para el listado de productos */
+.container-products{      
+  padding: 10px;
 }
   /* Visible solo en pantallas pequeñas (hasta 768px) */
   @media (max-width: 768px) {
-    .container-page{
-      margin-top: 50px;
-    }
     .product-list {
       display: contents;      
     }
@@ -46,11 +30,8 @@
     .container{
       display: contents;
     }
-    .container-page{
-      margin-top: 50px;
-    }
     .container-products{      
-      padding: 20px;
+      padding: 10px;
     }
     .product-list {
       position: relative;
@@ -70,18 +51,24 @@
       display: none;
     }
      /* Estilos para pantallas grandes (4 cards por fila) */
-  .cards-grid {
+  .cards-grid {  
+    top: 65px;
+    width: 100%;  
+    margin-top: 5px;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 20px 10px 0px 30px; 
   }
   
   /* Paginación */
   .pagination {
+    width: 100%;
+    margin-top: 65px;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    position: relative;
   }
   
   .pagination button {

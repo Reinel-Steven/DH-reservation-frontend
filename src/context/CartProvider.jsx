@@ -1,19 +1,14 @@
-import { useReducer } from 'react'
+import { useState } from 'react'
 import { CartContext } from './CartContext'
 
 export const CartProvider = ({children}) => {
 
+  const [selectProduct, setSelectProduct] = useState(null);
 
-  const cartReducer = (action = {}) => {
-    dispatch(action)
-    return action.payload
-  }
 
   return (
-    <>
-    <CartContext.Provider value={{cartReducer}}>
+    <CartContext.Provider value={{selectProduct, setSelectProduct}}>
       {children}
     </CartContext.Provider>
-    </>
   )
 }

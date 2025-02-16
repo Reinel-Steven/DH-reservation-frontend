@@ -2,13 +2,11 @@ import { useState } from 'react';
 import '../styles/layoutComponent.css'
 import { Button } from '@mui/material';
 
-export const LayoutComponent = () => {
+export const NavBarComponent = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      {/* Navbar */}
       <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container-fluid">
           {/* Logo y eslogan */}
@@ -43,6 +41,5 @@ export const LayoutComponent = () => {
           </div>
         </div>
       </nav>
-    </>
   )
 }

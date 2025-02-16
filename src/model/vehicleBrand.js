@@ -1,4 +1,4 @@
-export const vehicleBrand = [
+export const VehicleBrand = [
     { id: 1, nombre: "Toyota" },
     { id: 2, nombre: "Ford" },
     { id: 3, nombre: "Chevrolet" },

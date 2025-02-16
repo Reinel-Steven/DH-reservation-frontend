@@ -39,16 +39,6 @@
     font-weight: bold;
 }
 
-.remove-button{
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: .5s all ease;
-}
-
 .add-button{
     background-color: darkgreen;
     color: white;
@@ -57,10 +47,6 @@
     padding: 5px 10px;
     cursor: pointer;
     transition: .5s all ease;
-}
-
-.remove-button:hover{
-    background-color: #f86c62;
 }
 
 .add-button:hover{

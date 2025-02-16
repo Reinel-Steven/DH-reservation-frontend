@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { ProductContext } from './productContext'
-import { colors } from '@mui/material'
 import '../styles/productsPage.css'
 
 export const ProductProvider = ({children}) => {
 
-  const [products, setProduct] = useState([])
+  const [products, setProducts] = useState([])
 
   const fetchProducts = async () => {
     try {
       const response = await fetch('https://fakestoreapi.com/products')
       const data = await response.json()
-      setProduct(data)
+      setProducts(data)
     } catch (error) {
       console.log('Error al cargar productos ', error)
       Swal.fire(

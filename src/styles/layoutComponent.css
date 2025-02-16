@@ -1,3 +1,4 @@
+
 .navbar {
     position: fixed;
     /* Fija el navbar en la parte superior */
@@ -59,10 +60,13 @@
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 990px) {
     .navbar {
-        position: absolute;
         align-content: center;
         width: auto;        
     }
+    .card-search {       
+        padding: 15px; 
+        position: relative;        
+      }
     .card {
         margin-top: 0px;
         /* Espacio adicional en móviles */
