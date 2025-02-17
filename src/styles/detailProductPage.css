@@ -1,0 +1,27 @@
+.card{    
+    justify-content: center;
+    width: 98%;    
+    margin: 20px 20px 10px 10px;
+    border: 0;    
+}
+.card-header{
+    background-color: #c7b16b;
+}
+.container-img{
+    background-color: white;
+}
+.img-primary{
+    width: 100%;     
+  height: auto;      
+  object-fit: scale-down;
+  aspect-ratio: 16/9; 
+}
+.container-info{
+    font-size: medium;
+    padding: 10px;
+    margin: 10px;
+    align-items: flex-start;
+}
+.button-rent{
+   bottom: unset; 
+}

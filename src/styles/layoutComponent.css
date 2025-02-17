@@ -27,24 +27,6 @@
     height: 40px;
 }
 
-.color-black {
-    color: black;
-    background-color: black;
-}
-
-.color-white {
-    color: white;
-    background-color: white;
-}
-
-.color-gold {
-    color: white;
-    background-color: #C4A05F;
-}
-
-
-
-
 
 /* Estilos para los inputs y selects */
 .form-select,

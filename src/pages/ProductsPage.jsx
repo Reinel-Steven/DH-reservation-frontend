@@ -10,7 +10,7 @@ import { SearchComponent } from "../components/searchComponent"
 export const ProductsPage = () => {
 
   const { products } = useContext(ProductContext)
-  const { addProduct } = useContext(CartContext)
+  const { handleViewProduct } = useContext(CartContext)
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 12; // 4x4 = 16 cards por página
@@ -33,11 +33,11 @@ export const ProductsPage = () => {
           <CardComponent className="card"
             key={product.id}
             id={product.id}
-            product={product}
             image={product.image}
             tittle={product.tittle}
             description={product.description}
             price={product.price}
+            onClickView={() => handleViewProduct(product)}
           />
         ))}
       </div>
@@ -52,7 +52,7 @@ export const ProductsPage = () => {
             tittle={product.tittle}
             description={product.description}
             price={product.price}
-            handlerAdd={() => addProduct()}
+            onClickView={() => handleViewProduct(product)}
           />
         ))}
       </div>

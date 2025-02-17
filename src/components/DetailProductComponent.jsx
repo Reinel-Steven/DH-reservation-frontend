@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import "../styles/detailProductPage.css"
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useNavigate } from "react-router-dom";
 
 export const DetailProductComponent = () => {
 
-  const { selectProduct } = useContext(CartContext); 
-  
+  const navigate = useNavigate();
+
+  const { selectProduct } = useContext(CartContext);
+
+  const onClickBack = () => {
+    navigate('/');
+  }
   //const [selectedImage, setSelectedImage] = useState(product.image[0]);
 
   if (!selectProduct) {
@@ -14,14 +22,19 @@ export const DetailProductComponent = () => {
   return (
     <div className="container mt-4">
       <div className="card">
-        <div className="card-header bg-primary text-white text-center">
-          <h3>{selectProduct.title}</h3>
-        </div>
-        <div className="card-body">
-          <div className="row">
-            <div className="col-md-6 text-center">              
-              <img src={selectProduct.image} alt="Producto" className="img-fluid mb-3" />
-              {/*
+        <div className="card-header text-white text-center">
+          <h3 className="card-tittle">{selectProduct.title}
+            <button type="button" class="btn btn-sm btn-light button-back" onClick={() => onClickBack()}>
+              <i class="bi bi-arrow-left-square "></i></button>
+            <button type="button" class="btn btn-warning btn-sm button-edit" aria-label="Close">
+              Editar<i class="bi bi-pencil-square"></i></button>
+          </h3>
+
+          <div className="card-body">
+            <div className="row">
+              <div className="col-md-8 container-img">
+                <img src={selectProduct.image} alt="Producto" className="img-fluid mb-3 img-primary" />
+                {/*
               <div className="d-flex justify-content-center">
                 {product.images.map((img, index) => (
                   <img
@@ -36,14 +49,47 @@ export const DetailProductComponent = () => {
                 ))}
               </div>
               */}
-            </div>
-            <div className="col-md-6">
-              {/* 
+              </div>
+              <div className="col-md-4">
+                <div className="container container-info text-start">
+
+                  {/* 
               <h5><strong>Marca:</strong> {product.brand}</h5>
               <h5><strong>Categoría:</strong> {product.category}</h5>
               */}
-              <p><strong>Descripción:</strong> {selectProduct.description}</p>
-              <h4 className="text-success">${selectProduct.price}</h4>
+                  <div className="row mb-3">
+                    <div className="col-sm-4">
+                      <strong>Categoría:</strong>
+                    </div>
+                    <div class="col-sm-8">
+                      Electrónica
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row mb-3">
+                    <div className="col-sm-4">
+                      <strong>Marca:</strong>
+                    </div>
+                    <div class="col-sm-8">
+                      Sony
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row mb-3">
+                    <div class="col-sm-4">
+                      <strong>Descripción:</strong>
+                    </div>
+                    <div class="col-sm-8">
+                      {selectProduct.description}
+                    </div>
+                  </div>
+                  <br />
+                  <hr />
+                  <div class="mt-auto mb-3 button-rent">
+                    <button class="btn btn-primary w-100">Alquilar por ${selectProduct.price}</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

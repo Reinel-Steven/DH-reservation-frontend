@@ -22,4 +22,26 @@ body {
     bottom: 0;
     width: 100%;
   }
+
+  /* Colores de la marca  */
   
+  .color-black {
+    color: black;
+    background-color: black;
+}
+
+.color-white {
+    color: white;
+    background-color: white;
+}
+
+.color-gold {
+    color: white;
+    background-color: #C4A05F;
+}
+.button-edit{
+  float: right;
+}
+.button-back{
+  float: left;
+}

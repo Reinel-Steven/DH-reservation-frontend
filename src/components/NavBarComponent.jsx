@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import '../styles/layoutComponent.css'
-import { Button } from '@mui/material';
 
 export const NavBarComponent = () => {
 
