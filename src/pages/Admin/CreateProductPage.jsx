@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UploadFileContext } from "../../context/UploadFileContext.js"
 import "../../styles/CreateProductPage.css";
 import { VehicleBrand } from "../../model/VehicleBrand.js"
 import { Categories } from "../../model/categories.js";
 
 
 export const CreateProductPage = () => {
+
+  const { createProduct, uploadImage } = useContext(UploadFileContext)
+  
   const [product, setProduct] = useState({
-    name: "",
+    name: "",    
+    category: "",
+    brand: "",
     description: "",
     price: "",
     images: []
@@ -17,6 +23,29 @@ export const CreateProductPage = () => {
     setProduct({ ...product, [name]: value });
   };
 
+  
+  // Estado para almacenar la marca seleccionada
+  const [brandSelected, setBrandSelected] = useState("");
+
+  // Función para manejar el cambio de selección
+  const handleChangeBrand = (event) => {
+    setBrandSelected(event.target.value);    
+    handleChange(event);
+  };
+
+  // Estado para almacenar la categoria seleccionada
+  const [categorySelected, setCategorySelected] = useState("");
+
+  // Función para manejar el cambio de selección
+  const handleChangeCategory = (event) => {
+    setCategorySelected(event.target.value);
+    handleChange(event);
+  };
+
+  const handlerSaveProduct = () =>{
+    console.log(product);
+  }
+
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     if (files.length + product.images.length > 10) {
@@ -26,25 +55,45 @@ export const CreateProductPage = () => {
     setProduct({ ...product, images: [...product.images, ...files] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Producto creado:", product);
-  };
-
-  // Estado para almacenar la marca seleccionada
-  const [brandSelected, setBrandSelected] = useState("");
-
-  // Función para manejar el cambio de selección
-  const handleChangeBrand = (event) => {
-    setBrandSelected(event.target.value);
-  };
-
-  // Estado para almacenar la categoria seleccionada
-  const [categorySelected, setCategorySelected] = useState("");
-
-  // Función para manejar el cambio de selección
-  const handleChangeCategory = (event) => {
-    setCategorySelected(event.target.value);
+    
+    try {
+      // 1. Subir las imágenes y obtener sus nombres o URLs
+      const uploadedImages = await Promise.all(
+        product.images.map(async (file) => {
+          const reader = new FileReader();
+          return new Promise((resolve, reject) => {
+            reader.onload = async () => {
+              const base64Image = reader.result.split(",")[1];
+              const fileName = file.name;
+  
+              try {
+                await uploadImage(file); // Llama la función del contexto
+                resolve(fileName); // Guardamos el nombre
+              } catch (error) {
+                reject(error);
+              }
+            };
+            reader.readAsDataURL(file);
+          });
+        })
+      );
+  
+      // 2. Crear el producto con las imágenes ya subidas
+      await createProduct(
+        product.name, 
+        product.category,
+        product.brand,
+        product.description, 
+        product.price, 
+        uploadedImages);
+  
+      alert("Producto creado exitosamente");
+    } catch (error) {
+      console.error("Error al subir imágenes o crear el producto:", error);
+      alert("Hubo un error al crear el producto.");
+    }
   };
 
   return (
@@ -61,6 +110,7 @@ export const CreateProductPage = () => {
             {/* Categories */}
             <div className="mb-3">
               <select
+                name="category"
                 className="form-select"
                 value={categorySelected}
                 onChange={handleChangeCategory}
@@ -76,6 +126,7 @@ export const CreateProductPage = () => {
             {/* Brand */}
             <div className="mb-3">
               <select
+                name="brand"
                 className="form-select"
                 value={brandSelected}
                 onChange={handleChangeBrand}
@@ -88,6 +139,7 @@ export const CreateProductPage = () => {
                 ))}
               </select>
             </div>
+            {/* Name */}
             <div className="mb-3">
               <label className="form-label">Referencia</label>
               <input type="text"
@@ -99,9 +151,11 @@ export const CreateProductPage = () => {
                 required
               />
             </div>
+            {/* Description */}
             <div className="mb-3">
               <label className="form-label">Descripción</label>
-              <textarea className="form-control"
+              <input type="text" 
+                className="form-control" 
                 name="description" id="description"
                 value={product.description}
                 placeholder="Ej: cilindrage: 1600; color: negro; tipo: sedan; transmision: manual"
@@ -109,11 +163,12 @@ export const CreateProductPage = () => {
                 required
               />
             </div>
+            {/* Price */}
             <div className="mb-3">
               <label className="form-label">Precio</label>
-              <input type="number" id="price"
+              <input type="number" 
                 className="form-control"
-                name="price"
+                name="price" id="price"
                 value={product.price}
                 onChange={handleChange} required
                 placeholder="Valor de Renta"
@@ -128,7 +183,7 @@ export const CreateProductPage = () => {
                 ))}
               </div>
             </div>
-            <button type="submit" className="btn btn-success">Guardar Producto</button>
+            <button type="submit" className="btn btn-success" onClick={handlerSaveProduct}>Guardar Producto</button>
           </form>
         </div>
       </div>

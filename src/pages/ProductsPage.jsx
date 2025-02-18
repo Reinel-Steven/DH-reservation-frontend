@@ -19,7 +19,7 @@ export const ProductsPage = () => {
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = products.slice(indexOfFirstCard, indexOfLastCard);
-
+ 
   const handlePaginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -33,8 +33,8 @@ export const ProductsPage = () => {
           <CardComponent className="card"
             key={product.id}
             id={product.id}
-            image={product.image}
-            tittle={product.tittle}
+            image={product.images[0]}
+            tittle={product.name}
             description={product.description}
             price={product.price}
             onClickView={() => handleViewProduct(product)}
@@ -46,10 +46,10 @@ export const ProductsPage = () => {
       <div className="cards-grid">
         {currentCards.map((product) => (
           <CardComponent
-            key={product.id}
+            key={product.name}            
             id={product.id}
-            image={product.image}
-            tittle={product.tittle}
+            image={product.images[0]}
+            tittle={product.name}
             description={product.description}
             price={product.price}
             onClickView={() => handleViewProduct(product)}

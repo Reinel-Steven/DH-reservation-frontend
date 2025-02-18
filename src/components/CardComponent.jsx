@@ -1,9 +1,9 @@
 import '../styles/CardComponent.css'
 
-export const CardComponent = ({ image, tittle, description, price, onClickView }) => {
+export const CardComponent = ({id, image, tittle, description, price, onClickView }) => {
 
     return (
-        <div className="card">
+        <div id={id} className="card">
             <img src={image} alt={tittle} className="card-img" />
             <div className="card-content">
                 <h3 className="card-tittle">{tittle}</h3>

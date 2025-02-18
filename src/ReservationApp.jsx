@@ -2,6 +2,7 @@
 import './ReservationApp.css'
 import { ProductProvider } from './context/ProductProvider'
 import { CartProvider } from './context/CartProvider'
+import { UploadFileProvider } from './context/UploadFileProvider'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ProductsPage } from './pages/ProductsPage'
 import { CreateProductPage } from './pages/Admin/CreateProductPage'
@@ -17,6 +18,7 @@ export const ReservationApp = () => {
     <>
       <ProductProvider>
         <CartProvider>
+          <UploadFileProvider>
           <NavBarComponent />
           <Routes>
             <Route path="/" element={<ProductsPage />} ></Route>
@@ -26,6 +28,7 @@ export const ReservationApp = () => {
             <Route path="/list-product" element={<ListProductsPage />} ></Route>
           </Routes>
           <FooterComponent />
+          </UploadFileProvider>
         </CartProvider>
       </ProductProvider>
     </>

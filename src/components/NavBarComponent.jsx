@@ -33,8 +33,11 @@ export const NavBarComponent = () => {
               <a href="/register" className="btn btn-outline-light me-2">
                 Crear Cuenta
               </a>
-              <a href="/login" className="btn btn-light color-gold">
+              <a href="/login" className="btn btn-light color-gold me-2">
                 Iniciar Sesión
+              </a>
+              <a href="/create-product" className="btn btn-primary me-2">
+                Crear Producto
               </a>
             </div>
           </div>

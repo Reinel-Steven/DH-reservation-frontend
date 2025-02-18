@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import { UploadFileContext } from "./UploadFileContext"
 
 export const UploadFileProvider = ({ children }) => {
+
   const [uploading, setUploading] = useState(false);
 
   const uploadImage = async (file) => {
@@ -12,25 +13,33 @@ export const UploadFileProvider = ({ children }) => {
       reader.onload = async () => {
         const base64Image = reader.result.split(",")[1];
         const fileName = file.name;
-        
-        await axios.post("http://localhost:8082/api/storage/save-file", {
-          base64File: base64Image,
-          fileName,
+
+        await fetch("http://localhost:8002/api/storage/save-file", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: base64Image, fileName })
         });
       };
     } catch (error) {
-      console.error("Error uploading image:", error);
+      console.error("Error al cargar la imagen:", error);
     } finally {
       setUploading(false);
     }
   };
 
-  const createProduct = async (name, description, price) => {
+  const createProduct = async (name, category, brand, description, price, images) => {
     try {
-      await axios.post("http://localhost:8080/api/product/create", {
-        name,
-        description,
-        price,
+      await fetch("http://localhost:8000/api/product/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          category,
+          brand,
+          description,
+          price,
+          images
+        })
       });
     } catch (error) {
       console.error("Error creating product:", error);
@@ -38,8 +47,8 @@ export const UploadFileProvider = ({ children }) => {
   };
 
   return (
-    <UploadFileProvider.Provider value={{ uploadImage, createProduct, uploading }}>
-      {children}
-    </UploadFileProvider.Provider>
+    <UploadFileContext.Provider value={{ uploadImage, createProduct, uploading }}>
+      { children }
+    </UploadFileContext.Provider>
   );
 };

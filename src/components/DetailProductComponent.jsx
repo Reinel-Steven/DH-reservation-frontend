@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import "../styles/detailProductPage.css"
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -13,7 +13,7 @@ export const DetailProductComponent = () => {
   const onClickBack = () => {
     navigate('/');
   }
-  //const [selectedImage, setSelectedImage] = useState(product.image[0]);
+  const [selectedImage, setSelectedImage] = useState(selectProduct.images[0]);
 
   if (!selectProduct) {
     return <div><br /><br /><br />No se ha seleccionado ningún producto.</div>;
@@ -23,9 +23,9 @@ export const DetailProductComponent = () => {
     <div className="container mt-4">
       <div className="card">
         <div className="card-header text-white text-center">
-          <h3 className="card-tittle">{selectProduct.title}
+          <h3 className="card-tittle">{selectProduct.name}
             <button type="button" class="btn btn-sm btn-light button-back" onClick={() => onClickBack()}>
-              <i class="bi bi-arrow-left-square "></i></button>
+              <i className="bi bi-arrow-left-square "></i></button>
             <button type="button" class="btn btn-warning btn-sm button-edit" aria-label="Close">
               Editar<i class="bi bi-pencil-square"></i></button>
           </h3>
@@ -33,10 +33,10 @@ export const DetailProductComponent = () => {
           <div className="card-body">
             <div className="row">
               <div className="col-md-8 container-img">
-                <img src={selectProduct.image} alt="Producto" className="img-fluid mb-3 img-primary" />
-                {/*
+                <img src={selectedImage} alt="Producto" className="img-fluid mb-3 img-primary" />
+                {/*     imagenes pequeñas */}
               <div className="d-flex justify-content-center">
-                {product.images.map((img, index) => (
+                {selectProduct.images.map((img, index) => (
                   <img
                     key={index}
                     src={img}
@@ -48,7 +48,7 @@ export const DetailProductComponent = () => {
                   />
                 ))}
               </div>
-              */}
+
               </div>
               <div className="col-md-4">
                 <div className="container container-info text-start">

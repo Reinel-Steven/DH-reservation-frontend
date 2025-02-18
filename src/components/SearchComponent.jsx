@@ -20,6 +20,7 @@ export const SearchComponent = () => {
                 {/* Categories */}
                 <div className="col-md-3">
                     <select
+                        name='select-category'                    
                         className="form-select"
                         value={categorySelected}
                         onChange={handleChangeCategory}
@@ -36,6 +37,7 @@ export const SearchComponent = () => {
                 {/* Input de búsqueda por texto */}
                 <div className="col-md-6">
                     <input
+                        name='imput-search'
                         type="text"
                         className="form-control"
                         placeholder="Buscar por nombre..."
@@ -44,7 +46,7 @@ export const SearchComponent = () => {
 
                 {/* Boton Buscar */}
                 <div className="col-md-3">
-                    <button type="date" onClick={handleSubmit} className="form-control" >Buscar</button>
+                    <button name='button-search' type="date" onClick={handleSubmit} className="form-control" >Buscar</button>
                 </div>
             </div>
         </div>

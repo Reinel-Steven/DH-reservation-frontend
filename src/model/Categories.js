@@ -7,6 +7,6 @@ export const Categories = [
     { id: 6, nombre: "pick-up" },
     { id: 7, nombre: "sedan" },
     { id: 8, nombre: "hatchback" },
-    { id: 8, nombre: "electrico" },
+    { id: 9, nombre: "electrico" },
     // Agrega más marcas aquí...
   ];
