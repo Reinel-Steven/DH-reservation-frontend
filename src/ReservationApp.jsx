@@ -15,11 +15,12 @@ import { FooterComponent } from './components/FooterComponent'
 export const ReservationApp = () => {
 
   return (
-    <>
+    
+    <div className="d-flex flex-column">
       <ProductProvider>
         <CartProvider>
-          <UploadFileProvider>
-          <NavBarComponent />
+          <UploadFileProvider>            
+          <NavBarComponent />          
           <Routes>
             <Route path="/" element={<ProductsPage />} ></Route>
             <Route path="/" element={<Navigate to='/' />}  ></Route>
@@ -27,10 +28,11 @@ export const ReservationApp = () => {
             <Route path="/detail-product" element={<DetailProductPage />} ></Route>
             <Route path="/list-product" element={<ListProductsPage />} ></Route>
           </Routes>
-          <FooterComponent />
+          <FooterComponent />          
           </UploadFileProvider>
         </CartProvider>
       </ProductProvider>
-    </>
+      </div>
+    
   )
 }

@@ -13,16 +13,6 @@ body {
     display: contents;
   }
 
-  .footer {
-    background-color: #0b5ed7;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-
   /* Colores de la marca  */
   
   .color-black {
@@ -43,5 +33,5 @@ body {
   float: right;
 }
 .button-back{
-  float: left;
+  float: right;
 }

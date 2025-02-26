@@ -11,16 +11,16 @@ export const SearchComponent = () => {
         setCategorySelected(event.target.value);
     };
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         console.log("buscando los filtros")
     }
     return (
-        <div   className="card-search" >
+        <div className="card-search" >
             <div className="row g-2">
                 {/* Categories */}
-                <div className="col-md-3">
+                <div className="col-md-2">
                     <select
-                        name='select-category'                    
+                        name='select-category'
                         className="form-select"
                         value={categorySelected}
                         onChange={handleChangeCategory}
@@ -43,9 +43,12 @@ export const SearchComponent = () => {
                         placeholder="Buscar por nombre..."
                     />
                 </div>
-
+                {/* Selector de fecha */}
+                <div className="col-md-2">
+                    <input type="date" className="form-control" />
+                </div>
                 {/* Boton Buscar */}
-                <div className="col-md-3">
+                <div className="col-md-2">
                     <button name='button-search' type="date" onClick={handleSubmit} className="form-control" >Buscar</button>
                 </div>
             </div>

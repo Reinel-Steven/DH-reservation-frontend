@@ -9,5 +9,8 @@ export const VehicleBrand = [
     { id: 8, nombre: "Mercedes-Benz" },
     { id: 9, nombre: "Audi" },
     { id: 10, nombre: "Hyundai" },
+    { id: 11, nombre: "GW" },
+    { id: 12, nombre: "Suzuki" },
+    { id: 13, nombre: "Hino" },
     // Agrega más marcas aquí...
   ];

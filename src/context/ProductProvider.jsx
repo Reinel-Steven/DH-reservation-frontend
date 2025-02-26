@@ -11,7 +11,7 @@ export const ProductProvider = ({ children }) => {
     try {
       const response = await fetch('http://localhost:8000/api/product');
       const data = await response.json();
-      
+
       // Agregar la URL base a cada imagen
       //const url = "file:///D:/DigitalHouse/ProyectoReservacion/images-vehicles/"
       const baseURL = "./images-vehicles/"; // Reemplaza con la URL real de las imágenes
@@ -19,8 +19,12 @@ export const ProductProvider = ({ children }) => {
         ...product,
         images: product.images.map(imageName => `${baseURL}${imageName}`)
       }));
-  
-      setProducts(updatedProducts);
+
+      // Mezclar aleatoriamente los productos antes de guardarlos en el estado
+      const shuffledProducts = updatedProducts.sort(() => Math.random() - 0.5);
+
+
+      setProducts(shuffledProducts);
     } catch (error) {
       console.log('Error al cargar productos ', error);
       Swal.fire({
@@ -36,8 +40,8 @@ export const ProductProvider = ({ children }) => {
   }, [])
 
   return (
-    <ProductContext.Provider value={{ products }} >      
-      { children }
+    <ProductContext.Provider value={{ products }} >
+      {children}
     </ProductContext.Provider>
   )
 }

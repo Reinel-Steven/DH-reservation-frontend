@@ -22,12 +22,14 @@ export const DetailProductComponent = () => {
   return (
     <div className="container mt-4">
       <div className="card">
-        <div className="card-header text-white text-center">
+        <div className="card-header text-white text-lefth">
           <h3 className="card-tittle">{selectProduct.name}
             <button type="button" class="btn btn-sm btn-light button-back" onClick={() => onClickBack()}>
               <i className="bi bi-arrow-left-square "></i></button>
+              {/* 
             <button type="button" class="btn btn-warning btn-sm button-edit" aria-label="Close">
               Editar<i class="bi bi-pencil-square"></i></button>
+              */}
           </h3>
 
           <div className="card-body">
@@ -62,7 +64,7 @@ export const DetailProductComponent = () => {
                       <strong>Categoría:</strong>
                     </div>
                     <div class="col-sm-8">
-                      Electrónica
+                    {selectProduct.category}
                     </div>
                   </div>
                   <hr />
@@ -71,7 +73,7 @@ export const DetailProductComponent = () => {
                       <strong>Marca:</strong>
                     </div>
                     <div class="col-sm-8">
-                      Sony
+                    {selectProduct.brand}
                     </div>
                   </div>
                   <hr />

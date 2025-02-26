@@ -13,7 +13,7 @@ export const ProductsPage = () => {
   const { handleViewProduct } = useContext(CartContext)
 
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 12; // 4x4 = 16 cards por página
+  const cardsPerPage = 10; // 4x4 = 16 cards por página
 
   // Calcular las cards que se deben mostrar en la página actual
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -46,11 +46,13 @@ export const ProductsPage = () => {
       <div className="cards-grid">
         {currentCards.map((product) => (
           <CardComponent
-            key={product.name}            
+            key={product.id}            
             id={product.id}
             image={product.images[0]}
             tittle={product.name}
             description={product.description}
+            category={product.category}
+            brand={product.brand}
             price={product.price}
             onClickView={() => handleViewProduct(product)}
           />

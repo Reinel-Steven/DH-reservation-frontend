@@ -87,7 +87,8 @@ export const CreateProductPage = () => {
         product.brand,
         product.description, 
         product.price, 
-        uploadedImages);
+        uploadedImages
+      );
   
       alert("Producto creado exitosamente");
     } catch (error) {
